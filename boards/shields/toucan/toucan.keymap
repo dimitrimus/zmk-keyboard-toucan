@@ -4,9 +4,9 @@
 #include <dt-bindings/zmk/outputs.h>
 
 #define BASE 0
-#define RIGHT 1
-#define LEFT 2
-#define FN 3
+#define RGHT 1
+#define LFT 2
+#define FNC 3
 #define SPEC 4
 
 // Home row mods macro
@@ -37,7 +37,7 @@
             >;
         };
 
-        right {
+        rght {
             display-name = "RIGHT";
             bindings = <
                 &trans  &trans     &trans     &trans     &trans     &trans         &kp GRAVE  &kp MCHOM  &kp BSPC   &kp MCEND  &trans    &trans
@@ -47,7 +47,7 @@
             >;
         };
 
-        left {
+        lft {
             display-name = "LEFT";
             bindings = <
                 &trans  &kp N1     &kp N2     &kp N3     &kp N4     &kp N5         &kp N6     &kp N7     &kp N8     &kp N9     &kp N0    &trans
@@ -57,8 +57,8 @@
             >;
         };
 
-        fn {
-            display-name = "FN";
+        fnc {
+            display-name = "FNC";
             bindings = <
                 &trans  &kp F1     &kp F2     &kp F3     &kp F4     &kp F5         &kp F6     &kp F7           &kp F8           &kp F9     &kp F10   &trans
                 &trans  &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &trans         &trans     &mt RSHFT PG_DN  &mt RCTRL PG_UP  &kp RALT   &kp RGUI  &trans

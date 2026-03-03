@@ -53,8 +53,8 @@
         rght {
             display-name = "RT";
             bindings = <
-                &kp F12   &trans     &trans     &trans     &trans     &trans         &kp GRAVE  &kp MCHOM  &kp BSPC   &kp MCEND  &trans    &kp BSPC
-                &kp ESC   &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &trans         &kp LARW   &kp DARW   &kp UARW   &kp RARW   &trans    &kp ENTER
+                &kp F12   &trans     &trans     &trans     &trans     &trans         &kp GRAVE  &kp MCHOM  &kp BSPC   &kp MCEND  &none     &kp BSPC
+                &kp ESC   &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &trans         &kp LARW   &kp DARW   &kp UARW   &kp RARW   &none     &kp ENTER
                 &kp LSHFT &kp EQUAL  &kp PLUS   &kp UNDER  &kp MINUS  &kp PIPE       &kp BSLH   &kp LBRC   &kp RBRC   &kp LBKT   &kp RBKT  &kp RSHFT
                                                 &mkp LCLK  &kp ESC    &kp TAB        &kp SPC    &kp DQT    &mkp RCLK
             >;

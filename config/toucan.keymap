@@ -2,6 +2,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/mouse.h>
 
 #define HRML(k1,k2,k3,k4) &ht LGUI k1  &ht LALT k2  &ht LCTRL k3  &ht LSHFT k4
 #define HRMR(k1,k2,k3,k4) &ht RSHFT k1  &ht RCTRL k2  &ht RALT k3  &ht RGUI k4
@@ -30,7 +31,7 @@
    &none    &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P      &none
    &kp SQT  HRML(A,        S,         D,         F)     &kp G          &kp H      HRMR(J,        K,         L,       SEMI)    &kp RET
    &none    &lt 4 Z    &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &none 
-                               &kp LCLK  &lt 3 ESC  &lt 2 TAB          &lt 1 SPC  &lt 3 SQT &kp BSPC
+                              &mkp LCLK  &lt 3 ESC  &lt 2 TAB          &lt 1 SPC  &lt 3 SQT &kp BSPC
             >;
         };
 
@@ -40,7 +41,7 @@
    &none    &trans     &trans     &trans     &trans     &trans         &kp GRAVE  &kp MCHOM    &kp BSPC       &kp MCEND  &trans     &none
    &kp SQT  &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &trans         &kp LARW   &kp DARW     &kp UARW       &kp RARW   &trans     &kp RET
    &none    &kp EQUAL  &kp PLUS   &kp UNDER  &kp MINUS  &kp PIPE       &kp BSLH   &msc SCRL_UP &msc SCRL_DOWN &kp LBKT   &kp RBKT   &none 
-                                  &kp LCLK   &lt 3 ESC  &lt 2 TAB      &lt 1 SPC  &lt 3 DQT &kp BSPC
+                                 &mkp LCLK   &lt 3 ESC  &lt 2 TAB      &lt 1 SPC  &lt 3 DQT &kp BSPC
             >;
         };
 
@@ -50,7 +51,7 @@
    &none    &kp N1     &kp N2     &kp N3     &kp N4     &kp N5         &kp N6     &kp N7     &kp N8     &kp N9     &kp N0     &none
    &kp SQT  HRML(EXCL, AT,        HASH,      DLLR)      &kp PRCNT      &kp CARET  HRMR(AMPS, STAR,      LPAR,      RPAR)      &kp RET
    &none    &kp EQUAL  &kp PLUS   &kp UNDER  &kp MINUS  &kp PIPE       &kp BSLH   &kp LBRC   &kp RBRC   &kp LBKT   &kp RBKT   &none 
-                                  &kp LCLK   &lt 3 ESC  &lt 2 TAB       &lt 1 SPC  &lt 3 DQT &kp BSPC
+                                &mkp LCLK   &lt 3 ESC  &lt 2 TAB       &lt 1 SPC  &lt 3 DQT &kp BSPC
             >;
         };
 
@@ -75,4 +76,3 @@
         };
     };
 };
-

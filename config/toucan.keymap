@@ -1,18 +1,10 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 
-#define BASE 0
-#define RGHT 1
-#define LFT 2
-#define FNC 3
-#define SPEC 4
-
-// Home row mods macro
-#define HRML(k1,k2,k3,k4) &ht LGUI k1   &ht LALT k2   &ht LCTRL k3  &ht LSHFT k4
-#define HRMR(k1,k2,k3,k4) &ht RSHFT k1  &ht RCTRL k2  &ht RALT k3   &ht RGUI k4
+#define HRML(k1,k2,k3,k4) &ht LGUI k1  &ht LALT k2  &ht LCTRL k3  &ht LSHFT k4
+#define HRMR(k1,k2,k3,k4) &ht RSHFT k1  &ht RCTRL k2  &ht RALT k3  &ht RGUI k4
 #define MCHOM LG(LARW)
 #define MCEND LG(RARW)
 
@@ -21,85 +13,66 @@
         ht: hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "balanced";
+            flavor = "tap-preferred";
             tapping-term-ms = <220>;
             quick-tap-ms = <150>;
-            require-prior-idle-ms = <125>;
+            require-prior-idle-ms = <100>;
             bindings = <&kp>, <&kp>;
         };
     };
 
-    //conditional_layers {
-    //    compatible = "zmk,conditional-layers";
-    //    tri_layer {
-    //        if-layers = <1 2>;
-    //        then-layer = <3>;
-    //    };
-    //};
-
     keymap {
         compatible = "zmk,keymap";
 
-        base {
-            display-name = "BS";
+        default_layer {
+            display-name = "B";
             bindings = <
-                &kp ESC   &kp Q    &kp W  &kp E  &kp R  &kp T          &kp Y  &kp U    &kp I      &kp O    &kp P     &kp BSPC
-                &kp SQT   HRML(A,  S,     D,     F)     &kp G          &kp H  HRMR(J,  K,         L,       SEMI)     &kp ENTER
-                &kp LSHFT &lt 4 Z  &kp X  &kp C  &kp V  &kp B          &kp N  &kp M    &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-                              &mkp LCLK  &lt 3 ESC  &lt 2 TAB          &lt 1 SPC  &lt 3 SQT  &mkp RCLK
+   &none    &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P      &none
+   &kp SQT  HRML(A,        S,         D,         F)     &kp G          &kp H      HRMR(J,        K,         L,       SEMI)    &kp RET
+   &none    &lt 4 Z    &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &none 
+                               &kp LCLK  &lt 3 ESC  &lt 2 TAB          &lt 1 SPC  &lt 3 SQT &kp BSPC
             >;
         };
 
-        rght {
-            display-name = "RT";
+        first_layer {
+            display-name = ">";
             bindings = <
-                &kp ESC   &trans     &trans     &trans     &trans     &trans         &kp GRAVE  &kp MCHOM  &kp BSPC   &kp MCEND  &none     &kp BSPC
-                &kp SQT   &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &trans         &kp LARW   &kp DARW   &kp UARW   &kp RARW   &none     &kp ENTER
-                &kp LSHFT &kp EQUAL  &kp PLUS   &kp UNDER  &kp MINUS  &kp PIPE       &kp BSLH   &kp LBRC   &kp RBRC   &kp LBKT   &kp RBKT  &kp RSHFT
-                                                &mkp LCLK  &kp ESC    &kp TAB        &kp SPC    &kp DQT    &mkp RCLK
+   &none    &trans     &trans     &trans     &trans     &trans         &kp GRAVE  &kp MCHOM    &kp BSPC       &kp MCEND  &trans     &none
+   &kp SQT  &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &trans         &kp LARW   &kp DARW     &kp UARW       &kp RARW   &trans     &kp RET
+   &none    &kp EQUAL  &kp PLUS   &kp UNDER  &kp MINUS  &kp PIPE       &kp BSLH   &msc SCRL_UP &msc SCRL_DOWN &kp LBKT   &kp RBKT   &none 
+                                  &kp LCLK   &lt 3 ESC  &lt 2 TAB      &lt 1 SPC  &lt 3 DQT &kp BSPC
             >;
         };
 
-        lft {
-            display-name = "LT";
+        second_layer {
+            display-name = "<";
             bindings = <
-                &kp ESC   &kp N1     &kp N2     &kp N3     &kp N4     &kp N5         &kp N6     &kp N7     &kp N8     &kp N9     &kp N0    &kp BSPC
-                &kp SQT   HRML(EXCL, AT,        HASH,      DLLR)      &kp PRCNT      &kp CARET  HRMR(AMPS, STAR,      LPAR,      RPAR)     &kp ENTER
-                &kp LSHFT &kp EQUAL   &kp PLUS  &kp UNDER  &kp MINUS  &kp PIPE       &kp BSLH   &kp LBRC   &kp RBRC   &kp LBKT   &kp RBKT  &kp RSHFT
-                                                &mkp LCLK  &kp ESC    &kp TAB        &kp SPC    &kp DQT    &mkp RCLK
+   &none    &kp N1     &kp N2     &kp N3     &kp N4     &kp N5         &kp N6     &kp N7     &kp N8     &kp N9     &kp N0     &none
+   &kp SQT  HRML(EXCL, AT,        HASH,      DLLR)      &kp PRCNT      &kp CARET  HRMR(AMPS, STAR,      LPAR,      RPAR)      &kp RET
+   &none    &kp EQUAL  &kp PLUS   &kp UNDER  &kp MINUS  &kp PIPE       &kp BSLH   &kp LBRC   &kp RBRC   &kp LBKT   &kp RBKT   &none 
+                                  &kp LCLK   &lt 3 ESC  &lt 2 TAB       &lt 1 SPC  &lt 3 DQT &kp BSPC
             >;
         };
 
-        fnc {
+        third_layer {
             display-name = "FN";
             bindings = <
-                &kp ESC   &kp F1     &kp F2     &kp F3     &kp F4     &kp F5         &kp F6     &kp F7           &kp F8           &kp F9     &kp F10   &kp BSPC
-                &kp SQT   &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &trans         &trans     &mt RSHFT PG_DN  &mt RCTRL PG_UP  &kp RALT   &kp RGUI  &kp ENTER
-                &kp LSHFT &trans     &trans     &trans     &trans     &trans         &trans     &trans           &trans           &trans     &trans    &kp RSHFT
-                                                &mkp LCLK  &trans     &trans         &trans     &trans           &mkp RCLK
+   &none    &kp F1     &kp F2     &kp F3     &kp F4     &kp F5         &kp F6     &kp F7     &kp F8     &kp F9     &kp F10    &trans
+   &none    &kp LGUI   &kp LALT   &kp LCTRL  &kp LSHFT  &trans         &trans     &mt RSHFT PG_DN  &mt RCTRL PG_UP  &kp RALT  &kp RGUI
+   &none    &trans     &trans     &trans     &trans     &trans         &trans     &trans     &trans     &trans     &trans     &trans
+                                  &trans     &trans     &trans         &trans     &trans     &trans
             >;
         };
 
-        spec {
-            display-name = "SPC";
+        fourth_layer {
+            display-name = "BT";
             bindings = <
-                &trans  &trans  &trans  &trans  &trans      &bt BT_SEL 0         &bt BT_SEL 3  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans      &bt BT_SEL 1         &bt BT_SEL 4  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &bt BT_CLR  &bt BT_SEL 2         &trans        &trans  &trans  &trans  &trans  &trans
-                                        &trans  &trans      &trans               &trans        &trans  &trans
+   &none    &trans     &trans     &trans     &trans     &bt BT_SEL 0   &bt BT_SEL 3  &trans   &trans     &trans     &trans    &trans
+   &none    &trans     &trans     &trans     &trans     &bt BT_SEL 1   &bt BT_SEL 4  &trans   &trans     &trans     &trans    &trans
+   &none    &trans     &trans     &trans     &bt BT_CLR &bt BT_SEL 2   &trans     &trans      &trans     &trans     &trans    &trans
+                                  &trans     &trans     &trans         &trans     &trans     &trans
             >;
-        };
-
-        extra_1 {
-                status = "reserved";
-        };
-
-        extra_2 {
-                status = "reserved";
-        };
-
-        extra_3 {
-                status = "reserved";
         };
     };
 };
+
